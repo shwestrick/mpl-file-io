@@ -1,0 +1,12 @@
+First attempt:
+  open BinIO
+  val (reader: BinIO.StreamIO.reader, vec: Word8Vector.vector) =
+    StreamIO.getReader (getInstream (openIn pathToFile))
+(note also that reader: BinPrimIO.reader)
+BUT the problem is that getReader essentially performs an inputAll.
+
+Alternatively, could do
+  open Poxis.FileSys
+  val file: file_desc = openf (pathToFile, O_RDONLY, O.fromWord 0w0)
+but file_desc objects don't seem to be readable? We can do fdToIOD
+to get a OS.IO.iodesc but this doesn't help...
