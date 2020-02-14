@@ -1,4 +1,10 @@
 $(SML_LIB)/basis/basis.mlb
 $(SML_LIB)/basis/fork-join.mlb
 
+local
+  $(SML_LIB)/basis/build/sources.mlb
+in
+  structure Word8ArrayExtra = Word8Array
+end
+
 File.sml
